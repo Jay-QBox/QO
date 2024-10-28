@@ -8,10 +8,10 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/logo.png";
 import { Link, useLocation } from "react-router-dom";
 const navigation = [
-  { name: "Home", href: "/"},
-  { name: "Services", href: "/services" },
-  { name: "Contact Us", href: "/contact" },
-  { name: "About Us", href: "/about" },
+  { name: "Home", href: "/",id:0},
+  { name: "Services", href: "/services",id:1 },
+  { name: "Contact Us", href: "/contact" ,id:2},
+  { name: "About Us", href: "/about" ,id:3},
 ];
 
 function classNames(...classes) {
@@ -51,6 +51,7 @@ export default function Navbar() {
                 {navigation.map((item) => (
 
                 <Link 
+                key={item.id}
                   to={item.href} 
                   className={`px-3 py-2 text-sm font-medium ${location.pathname === item.href ? 'text-base' : 'text-gray-500 hover:text-black'}`}
                   >
