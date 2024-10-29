@@ -66,7 +66,7 @@ const ParentComponent = () => {
         />
       )}
     </div>
-<SemiFooter/>
+// <SemiFooter/>
  // </>
   );
 };
