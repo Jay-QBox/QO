@@ -39,10 +39,10 @@ export default function Services() {
         <div class="block mb-4 mx-auto border-b border-slate-300 pb-2 max-w-[360px]">
           <a
             target="_blank"
-            href="https://www.material-tailwind.com/docs/html/card"
+{/*             href="https://www.material-tailwind.com/docs/html/card" */}
             class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
           >
-            <b>Services</b>.
+            <b>Platforms</b>.
           </a>
         </div>
         <div className="flex gap-10 flex-wrap justify-center">
