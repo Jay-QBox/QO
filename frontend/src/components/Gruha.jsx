@@ -32,6 +32,7 @@ const ParentComponent = () => {
     setSelectedCard(null); // Clear selected card
   };
   return (
+<>
     <div className="flex flex-wrap justify-center gap-10">
         <div class="block mb-4 mx-auto border-b border-slate-300 pb-2 max-w-[360px]">
           <a
@@ -66,6 +67,7 @@ const ParentComponent = () => {
       )}
     </div>
 <SemiFooter/>
+ </>
   );
 };
 
