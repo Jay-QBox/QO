@@ -9,7 +9,7 @@ import logo from "../assets/logo.png";
 import { Link, useLocation } from "react-router-dom";
 const navigation = [
   { name: "Home", href: "/",id:0},
-  { name: "Services", href: "/services",id:1 },
+  { name: "Platforms", href: "/services",id:1 },
   { name: "Contact Us", href: "https://qo-box.com/contact.html" ,id:2},
   { name: "About Us", href: "https://qo-box.com/about.html#story-section" ,id:3},
 ];
