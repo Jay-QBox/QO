@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Card from './Card'; // Adjust the import path based on your file structure
+import Card from './Card'; 
 import ViewMoreModal from './ViewMoreModal';
-// import SemiFooter from "./SemiFooter";
 
 const ParentComponent = () => {
   const [cards, setCards] = useState([]);
@@ -34,15 +33,7 @@ const ParentComponent = () => {
   return (
 // <>
     <div className="flex flex-wrap justify-center gap-10">
-        <div class="block mb-4 mx-auto border-b border-slate-300 pb-2 max-w-[360px]">
-          <a
-            target="_blank"
-            // href="https://www.material-tailwind.com/docs/html/card"
-            class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
-          >
-            <b>Arogya Gruha Services</b>.
-          </a>
-        </div>
+        
       {cards.map((card, index) => (
         <Card 
           key={index} 
@@ -51,7 +42,7 @@ const ParentComponent = () => {
           bullet={cards.cardBullets}
           imageUrl={card.cardImage} 
           onReadMore={() => openModal(card)} 
-          // Adjust the property name based on the actual API response
+         
         />
       ))}
 
@@ -66,8 +57,6 @@ const ParentComponent = () => {
         />
       )}
     </div>
-// <SemiFooter/>
- // </>
   );
 };
 
