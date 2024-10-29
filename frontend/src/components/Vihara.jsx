@@ -1,35 +1,29 @@
-import React from "react";
-import gruha from "../assets/gruha.png";
-import vihara from "../assets/vihara.png";
-import im from "../assets/im.webp";
-import { Link, useLocation } from "react-router-dom";
+import React from 'react'
+import { Link } from "react-router-dom";
 
-export default function Services() {
-  const services = [
-    {
-      id: 0,
-      title: "Arogya Gruha",
-      img: gruha,
-      desc: "Arogya Gruha is your trusted companion for holistic wellness at home. We offer resources, guidance, and solutions to foster a healthier, balanced lifestyle.",
-      href: "/services/ag",
-    },
-    {
-      id: 1,
-      title: "Arogya Vihara",
-      img: vihara,
-
-      desc: "Arogya Vihar is your destination for comprehensive wellness and health retreats, offering rejuvenating experiences that promote holistic healing and balance.",
-      href: "/services/av",
-    },
-    {
-      id: 2,
-      title: "Insta Meds",
-      img: im,
-
-      desc: "Insta Medical Services provides rapid, reliable healthcare solutions right when you need them, ensuring accessible and efficient medical care for all.",
-      href: "/services/im",
-    },
-  ];
+export default function Vihara() {
+    
+    const services = [
+        {
+          id: 0,
+          title: "Hospital Package",
+          desc: "Arogya Gruha is your trusted companion for holistic wellness at home. We offer resources, guidance, and solutions to foster a healthier, balanced lifestyle.",
+          href: "/services/ag",
+        },
+        {
+          id: 1,
+          title: "Arogya Vihara",
+    
+          desc: "Arogya Vihar is your destination for comprehensive wellness and health retreats, offering rejuvenating experiences that promote holistic healing and balance.",
+          href: "/services/av",
+        },
+        {
+          id: 2,
+          title: "Insta Meds",
+          desc: "Insta Medical Services provides rapid, reliable healthcare solutions right when you need them, ensuring accessible and efficient medical care for all.",
+          href: "/services/im",
+        },
+      ];
   return (
     <div class="flex justify-center mt-20 items-start min-h-screen flex-wrap">
       <div class=" mx-auto">
@@ -46,11 +40,11 @@ export default function Services() {
           {services.map((itm, index) => (
             <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
               <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-96">
-                <img
+                {/* <img
                   src={itm.img}
                   alt="card-image"
                   class="object-cover w-full h-full"
-                />
+                /> */}
               </div>
               <div class="p-6">
                 <div class="flex items-center justify-between mb-2">
@@ -78,5 +72,5 @@ export default function Services() {
         
       </div>
     </div>
-  );
+  )
 }

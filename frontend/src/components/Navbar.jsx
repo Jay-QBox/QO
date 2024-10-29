@@ -18,10 +18,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar() {
+export default function Navbar({zIndex}) {
   const location = useLocation();
   return (
-    <Disclosure as="nav" className="bg-white border">
+    <Disclosure as="nav" className="bg-white border z-50	relative">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -69,7 +69,7 @@ export default function Navbar() {
                   //   onClick={handleSignOut}
                   className="bg-base text-white font-medium py-2 px-4 rounded transition"
                 >
-                  Sign In
+                  Login In
                 </button>
               </div>
             </Menu>
