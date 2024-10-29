@@ -10,8 +10,8 @@ import { Link, useLocation } from "react-router-dom";
 const navigation = [
   { name: "Home", href: "/",id:0},
   { name: "Services", href: "/services",id:1 },
-  { name: "Contact Us", href: "/contact" ,id:2},
-  { name: "About Us", href: "/about" ,id:3},
+  { name: "Contact Us", href: "https://qo-box.com/contact.html" ,id:2},
+  { name: "About Us", href: "https://qo-box.com/about.html#story-section" ,id:3},
 ];
 
 function classNames(...classes) {
@@ -61,19 +61,17 @@ export default function Navbar({zIndex}) {
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            {/* if user is loggen IN */}
+          {/* <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <Menu as="div" className="relative ml-3">
               <div>
                 <button
-                  //   onClick={handleSignOut}
-                  className="bg-base text-white font-medium py-2 px-4 rounded transition"
+                  className="bg-base text-white font-medium py-2 px-4 rounded transition rounded-md"
                 >
                   Login In
                 </button>
               </div>
             </Menu>
-          </div>
+          </div> */}
         </div>
       </div>
 

@@ -3,6 +3,8 @@ import gruha from "../assets/gruha.png";
 import vihara from "../assets/vihara.png";
 import im from "../assets/im.webp";
 import { Link, useLocation } from "react-router-dom";
+import Footer from "./Footer";
+import SemiFooter from "./SemiFooter";
 
 export default function Services() {
   const services = [
@@ -31,6 +33,7 @@ export default function Services() {
     },
   ];
   return (
+    <>
     <div class="flex justify-center mt-20 items-start min-h-screen flex-wrap">
       <div class=" mx-auto">
         <div class="block mb-4 mx-auto border-b border-slate-300 pb-2 max-w-[360px]">
@@ -78,5 +81,8 @@ export default function Services() {
         
       </div>
     </div>
+    <SemiFooter/>
+    </>
+          
   );
 }
