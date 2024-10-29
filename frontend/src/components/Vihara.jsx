@@ -7,26 +7,41 @@ export default function Vihara() {
       id: 0,
       title: "Hospital Package",
       desc: " Comprehensive healthcare services with expert medical staff, advanced facilities, and compassionate care to meet all patient needs effectively.",
-      //   href: "/services/ag",
     },
     {
       id: 1,
       title: "Transportation Package",
-
       desc: " Reliable, efficient transportation services ensuring seamless travel experiences with safety and comfort for local and long-distance journeys,",
-      //   href: "/services/av",
     },
     {
       id: 2,
       title: "Visa Package",
       desc: "Simplified visa assistance, guiding you through applications and documentation for a hassle-free travel experience worldwide.",
-      //   href: "/services/im",
     },
     {
       id: 3,
       title: "Hotel Package",
       desc: "Affordable, luxurious hotel packages tailored to your needs, offering premium stays with exclusive amenities and memorable experiences.",
-      //   href: "/services/im",
+    },
+    {
+      id: 4,
+      title: "Agents Package",
+      desc: " Special benefits and streamlined support for agents managing client bookings.",
+    },
+    {
+      id: 5,
+      title: "Local Travel Package",
+      desc: " Convenient transport and lodging for nearby destinations.",
+    },
+    {
+      id: 6,
+      title: "Food Package",
+      desc: "Meal plans covering diverse dietary needs, with customizable options.",
+    },
+    {
+      id: 7,
+      title: "Athorized Attenders Package",
+      desc: " Essentials for attendants assisting travelers, including meals and accommodations.",
     },
   ];
   return (
@@ -36,7 +51,6 @@ export default function Vihara() {
         <div class="block mb-4 mx-auto border-b border-slate-300 pb-2 max-w-[360px]">
           <a
             target="_blank"
-            // href="https://www.material-tailwind.com/docs/html/card"
             class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
           >
             <b>Arogya Vihara Services</b>.
@@ -55,11 +69,11 @@ export default function Vihara() {
                   {itm.desc}
                 </p>
               </div>
-              <div class="p-6 pt-0">
+              {/* <div class="p-6 pt-0">
                 <a href="#" className="text-sm/6 font-semibold text-gray-900">
                   Learn more <span aria-hidden="true">→</span>
                 </a>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

@@ -12,6 +12,7 @@ import { BiSolidDiscount } from "react-icons/bi";
 import { MdOutlineSupportAgent } from "react-icons/md";
 import { MdPayments } from "react-icons/md";
 import { MdOutlineInventory } from "react-icons/md";
+import gruha from "../assets/im.webp"
 
 
 export default function InstaMed() {
@@ -90,6 +91,18 @@ export default function InstaMed() {
       title: "Inventory Management",
       desc: "Vendors can manage their stock levels effectively, receive notifications for low inventory, and prevent stockouts. This feature ensures product availability and streamlines operations.",
     },
+    {
+      icon:<MdOutlineInventory style={{ fontSize: '40px' }}/>,
+      id: 12,
+      title: "Blood Test",
+      desc: "Vendors can manage their stock levels effectively, receive notifications for low inventory, and prevent stockouts. This feature ensures product availability and streamlines operations.",
+    },
+    {
+      icon:<MdOutlineInventory style={{ fontSize: '40px' }}/>,
+      id: 13,
+      title: "Radio Test",
+      desc: "Vendors can manage their stock levels effectively, receive notifications for low inventory, and prevent stockouts. This feature ensures product availability and streamlines operations.",
+    },
   ];
   return (
     <>
@@ -108,6 +121,7 @@ export default function InstaMed() {
             <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96 justify-between">
               <div class="p-6">
                 <div >{itm.icon}</div>
+                {/* <img src={gruha} alt="" className="mb-2" /> */}
                 <div class="flex items-center justify-between mb-2">
                   <p class="block font-sans text-black antialiased font-medium leading-relaxed text-blue-gray-900">
                     {itm.title}
@@ -117,11 +131,11 @@ export default function InstaMed() {
                   {itm.desc}
                 </p>
               </div>
-              <div class="p-6 pt-0">
+              {/* <div class="p-6 pt-0">
                 <a href="#" className="text-sm/6 font-semibold text-gray-900">
                   Learn more <span aria-hidden="true">→</span>
                 </a>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

@@ -39,7 +39,7 @@ export default function Services() {
         <div class="block mb-4 mx-auto border-b border-slate-300 pb-2 max-w-[360px]">
           <a
             target="_blank"
-            href="#"
+            // href="#"
             class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
           >
             <b>Platforms</b>.
