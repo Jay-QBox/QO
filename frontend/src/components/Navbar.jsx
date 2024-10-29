@@ -10,18 +10,18 @@ import { Link, useLocation } from "react-router-dom";
 const navigation = [
   { name: "Home", href: "/",id:0},
   { name: "Services", href: "/services",id:1 },
-  { name: "Contact Us", href: "/contact" ,id:2},
-  { name: "About Us", href: "/about" ,id:3},
+  { name: "Contact Us", href: "https://qo-box.com/contact.html" ,id:2},
+  { name: "About Us", href: "https://qo-box.com/about.html#story-section" ,id:3},
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar() {
+export default function Navbar({zIndex}) {
   const location = useLocation();
   return (
-    <Disclosure as="nav" className="bg-white border">
+    <Disclosure as="nav" className="bg-white border z-50	relative">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -61,19 +61,17 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            {/* if user is loggen IN */}
+          {/* <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <Menu as="div" className="relative ml-3">
               <div>
                 <button
-                  //   onClick={handleSignOut}
-                  className="bg-base text-white font-medium py-2 px-4 rounded transition"
+                  className="bg-base text-white font-medium py-2 px-4 rounded transition rounded-md"
                 >
-                  Sign In
+                  Login In
                 </button>
               </div>
             </Menu>
-          </div>
+          </div> */}
         </div>
       </div>
 
