@@ -35,12 +35,19 @@ export default function Hero() {
         Arogya is your trusted companion for holistic wellness at home. We offer resources, guidance, and solutions to foster a healthier, balanced lifestyle, making it easy to integrate wellness into everyday life.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
-          <a
+{/*           <a
             href="/services"
             className="rounded-md bg-base px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Get started
-          </a>
+          
+          </a> */}
+          <Link
+                  to={"/services"}
+                  className={`rounded-md bg-base px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
+                  >
+                  Get started
+                </Link>
           <a href="#" className="text-sm/6 font-semibold text-gray-900">
             Learn more <span aria-hidden="true">→</span>
           </a>
