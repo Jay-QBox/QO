@@ -98,7 +98,7 @@ export default function InstaMed() {
       <Sidebar setSelectedCategory={setSelectedCategory} />
 
       {/* Main Panel */}
-      <div className="flex-grow p-5">
+      <div className="flex-grow p-5 ml-64"> {/* Adjust the margin to prevent overlap */}
         <h2 className="text-2xl font-bold mb-4">{selectedCategory}</h2>
 
         {/* Card Display */}
