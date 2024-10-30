@@ -26,7 +26,7 @@ export default function Vihara() {
   const servicesTab = [
     {
       id: 0,
-      img: demoImg,
+      img: "https://qobox320-my.sharepoint.com/:i:/g/personal/sravani_g_qo-box_in/EZ1w81KpO0dDk1pUHRVyBr0BJtNX03bh3PYAlELWuGnhFA?e=4lEXRh",
       title: "Hospitals",
       desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
       // bullets: [

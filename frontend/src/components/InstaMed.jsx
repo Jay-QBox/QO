@@ -1,361 +1,132 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import Sidebar from "./Sidebar";
 import Card from "./Card";
 import ViewMoreModal from "./ViewMoreModal";
 import SemiFooter from "./SemiFooter";
 import demoImg from "../assets/gruha.png";
 
 export default function InstaMed() {
+  const [selectedCategory, setSelectedCategory] = useState("All Packages");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [instaTab, setInstaTab] = useState("Insta Pharma");
 
-  const tabs = [
-    {
-      id: 0,
-      name: "Insta Pharma",
-    },
-    {
-      id: 1,
-      name: "Insta RLab",
-    },
-    {
-      id: 2,
-      name: "Insta PLab",
-    },
-  ];
   const pharmaTab = [
     {
-      id: 0,
+      title: "Pharma Drug A",
+      desc: "A pharmaceutical drug used for treating various conditions.",
       img: demoImg,
-      title: "Onboarding Pharmacies ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
+      bullets: ["Effectiveness: High", "Usage: Daily", "Available Stock: 50"],
     },
     {
-      id: 1,
+      title: "Pharma Drug B",
+      desc: "An over-the-counter medicine for minor ailments.",
       img: demoImg,
-      title: "Search/Display Nearby Pharmacy  ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 2,
-      img: demoImg,
-      title: "Place order for medicine ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 3,
-      img: demoImg,
-      title: "Payments",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 4,
-      img: demoImg,
-      title: "Historical Data ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 5,
-      img: demoImg,
-      title: "Prescription Display  ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 7,
-      img: demoImg,
-      title: "Subscription & Package model ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 8,
-      img: demoImg,
-      title: "Individual Profile maintenance ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
+      bullets: ["Effectiveness: Moderate", "Usage: As needed", "Available Stock: 120"],
     },
   ];
+
   const rlabTab = [
     {
-      id: 0,
+      title: "R Lab Diagnostic Kit",
+      desc: "A reliable diagnostic kit for routine health checkups.",
       img: demoImg,
-      title: "Onboarding R Lab",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
+      bullets: ["Accuracy: 98%", "Includes: Blood tests", "Price: $50"],
     },
     {
-      id: 1,
+      title: "R Lab Blood Analyzer",
+      desc: "Advanced analyzer for blood work analysis.",
       img: demoImg,
-      title: "Search/Display Nearby Radiology lab  ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 2,
-      img: demoImg,
-      title: "Booking slots for scanning ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 3,
-      img: demoImg,
-      title: "Payments ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-
-    {
-      id: 4,
-      img: demoImg,
-      title: "Historical data   ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 5,
-      img: demoImg,
-      title: "Subscription & Package model   ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 6,
-      img: demoImg,
-      title: "Individual Profile maintenance  ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 7,
-      img: demoImg,
-      title: "Reports display",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
+      bullets: ["Speed: Fast", "Usage: Laboratory", "Warranty: 1 year"],
     },
   ];
+
   const plabTab = [
     {
-      id: 0,
+      title: "P Lab Chemistry Set",
+      desc: "A complete set for chemical analysis and testing.",
       img: demoImg,
-      title: "Onboarding P Lab",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
+      bullets: ["Components: 30", "Usage: Educational", "Availability: In stock"],
     },
     {
-      id: 1,
+      title: "P Lab Microscope",
+      desc: "A high-resolution microscope for lab use.",
       img: demoImg,
-      title: "Search/Display Nearby Pathology lab  ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 2,
-      img: demoImg,
-      title: "Booking slots for sample collection ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 3,
-      img: demoImg,
-      title: "Payments ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-
-    {
-      id: 4,
-      img: demoImg,
-      title: "Historical data   ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 5,
-      img: demoImg,
-      title: "Subscription & Package model   ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 6,
-      img: demoImg,
-      title: "Individual Profile maintenance  ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
-    },
-    {
-      id: 7,
-      img: demoImg,
-      title: "Reports display",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
+      bullets: ["Magnification: 1000x", "Lens Type: Optical", "Warranty: 2 years"],
     },
   ];
+
+  const supportTab = [
+    {
+      title: "Customer Support Guide",
+      desc: "Guidelines on how to get support for products.",
+      img: demoImg,
+      bullets: ["Hours: 24/7", "Contact: support@example.com", "Phone: +1-800-123-4567"],
+    },
+    {
+      title: "Technical Support",
+      desc: "Dedicated support for technical assistance.",
+      img: demoImg,
+      bullets: ["Hours: Business hours", "Contact: techsupport@example.com", "Phone: +1-800-987-6543"],
+    },
+  ];
+
+  // Combine all package data for "All Packages" view
+  const allPackages = [...pharmaTab, ...rlabTab, ...plabTab];
+  
+  // Render cards based on selected category
+  const currentCards =
+    selectedCategory === "Pharma Lab"
+      ? pharmaTab
+      : selectedCategory === "R Lab"
+      ? rlabTab
+      : selectedCategory === "P Lab"
+      ? plabTab
+      : selectedCategory === "Customer Support"
+      ? supportTab
+      : allPackages; // Show all packages if "All Packages" is selected
+
   const openModal = (card) => {
     setSelectedCard(card);
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedCard(null); // Clear selected card
-  };
+  const closeModal = () => setIsModalOpen(false);
+
   return (
-    // <>
-    <div className="flex flex-wrap flex-col justify-center gap-0">
-      <div class="block mb0 mx-auto border-b mt-10 border-slate-300 pb-0 max-w-[360px]">
-        <a
-          target="_blank"
-          class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
-        >
-          <b>Lazy Meds Services</b>
-        </a>
-      </div>
-      <ul className="flex  row mx-auto gap-5  mt-12 items-center">
-        {tabs.map((itm, index) => (
-          <li
-            onClick={() => setInstaTab(itm.name)}
-            className={`cursor-pointer px-2 pb-3 list-none text-slate-700 ${
-              instaTab === itm.name && "text-base-primary border-b font-bold"
-            }`}
-            key={index}
-          >
-            {itm.name}
-          </li>
-        ))}
-      </ul>
-      <div className="flex flex-wrap justify-center gap-10">
-        {(instaTab === "Insta Pharma"
-          ? pharmaTab
-          : instaTab === "Insta RLab"
-          ? rlabTab
-          : plabTab
-        ).map((card, index) => (
-          <Card
-            key={index}
-            title={card.title}
-            description={card.desc}
-            bullet={card.bullets}
-            imageUrl={card.img}
-            onReadMore={() => openModal(card)}
+    <div className="flex">
+      {/* Sidebar */}
+      <Sidebar setSelectedCategory={setSelectedCategory} />
+
+      {/* Main Panel */}
+      <div className="flex-grow p-5">
+        <h2 className="text-2xl font-bold mb-4">{selectedCategory}</h2>
+
+        {/* Card Display */}
+        <div className="flex flex-wrap gap-4">
+          {currentCards.map((card, index) => (
+            <Card
+              key={index}
+              title={card.title}
+              description={card.desc}
+              imageUrl={card.img}
+              onReadMore={() => openModal(card)}
+            />
+          ))}
+        </div>
+
+        <SemiFooter />
+
+        {/* View More Modal */}
+        {selectedCard && (
+          <ViewMoreModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            title={selectedCard.title}
+            description={selectedCard.desc}
+            bullet={selectedCard.bullets}
           />
-        ))}
+        )}
       </div>
-      <SemiFooter />
-      {/* Render the modal */}
-      {selectedCard && (
-        <ViewMoreModal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          title={selectedCard.title} // Match 'title' with 'title' in servicesTabs
-          description={selectedCard.desc} // Match 'desc' with 'description'
-          bullet={selectedCard.bullets} // Match 'bullets' with 'bullet'
-        />
-      )}
     </div>
   );
 }
