@@ -2,23 +2,27 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Menu
+  Menu,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/logo.png";
 import { Link, useLocation } from "react-router-dom";
 const navigation = [
-  { name: "Home", href: "/",id:0},
-  { name: "Platforms", href: "/services",id:1 },
-  { name: "Contact Us", href: "https://qo-box.com/contact.html" ,id:2},
-  { name: "About Us", href: "https://qo-box.com/about.html#story-section" ,id:3},
+  { name: "Home", href: "/", id: 0 },
+  { name: "Platforms", href: "/services", id: 1 },
+  { name: "Contact Us", href: "https://qo-box.com/contact.html", id: 2 },
+  {
+    name: "About Us",
+    href: "https://qo-box.com/about.html#story-section",
+    id: 3,
+  },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar({zIndex}) {
+export default function Navbar({ zIndex }) {
   const location = useLocation();
   return (
     <Disclosure as="nav" className="bg-white border z-50	relative">
@@ -49,14 +53,22 @@ export default function Navbar({zIndex}) {
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
                 {navigation.map((item) => (
-
-                <Link 
-                key={item.id}
-                  to={item.href} 
-                  className={`px-3 py-2 text-sm font-medium ${location.pathname === item.href ? 'text-base' : 'text-gray-500 hover:text-black'}`}
+                  <Link
+                    key={item.id}
+                    to={item.href}
+                    className={`px-3 py-2 text-sm font-medium ${
+                      location.pathname === item.href ||
+                      (item.href === "/services" &&
+                        location.pathname.startsWith("/services"))
+                        ? "text-base"
+                        : "text-gray-500 hover:text-black"
+                    }`}
+                    {...(item.href.startsWith("http")
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
                   >
-                  {item.name}
-                </Link>
+                    {item.name}
+                  </Link>
                 ))}
               </div>
             </div>

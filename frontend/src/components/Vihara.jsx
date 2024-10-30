@@ -1,86 +1,260 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Card from "./Card";
+import ViewMoreModal from "./ViewMoreModal";
 import SemiFooter from "./SemiFooter";
+import demoImg from "../assets/gruha.png";
 
 export default function Vihara() {
-  const services = [
+
+const [isModalOpen, setIsModalOpen] = useState(false);
+const [selectedCard, setSelectedCard] = useState(null);
+const [viharaTab, setViharaTab] = useState("Services");
+
+  
+  const tabs = [
     {
       id: 0,
-      title: "Hospital Package",
-      desc: " Comprehensive healthcare services with expert medical staff, advanced facilities, and compassionate care to meet all patient needs effectively.",
+      name: "Services",
     },
     {
       id: 1,
-      title: "Transportation Package",
-      desc: " Reliable, efficient transportation services ensuring seamless travel experiences with safety and comfort for local and long-distance journeys,",
+      name: "Packages",
     },
     {
       id: 2,
-      title: "Visa Package",
-      desc: "Simplified visa assistance, guiding you through applications and documentation for a hassle-free travel experience worldwide.",
+      name: "Customer Support ",
+    },
+  ]
+  const servicesTab = [
+    {
+      id: 0,
+      img: demoImg,
+      title: "Hospitals",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
+      id: 1,
+      img: demoImg,
+      title: "Translators",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
+      id: 2,
+      img: demoImg,
+      title: "Existing agents  ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
       id: 3,
-      title: "Hotel Package",
-      desc: "Affordable, luxurious hotel packages tailored to your needs, offering premium stays with exclusive amenities and memorable experiences.",
+      img: demoImg,
+      title: "Flights ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
       id: 4,
-      title: "Agents Package",
-      desc: " Special benefits and streamlined support for agents managing client bookings.",
+      img: demoImg,
+      title: "Visas  ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
       id: 5,
-      title: "Local Travel Package",
-      desc: " Convenient transport and lodging for nearby destinations.",
-    },
-    {
-      id: 6,
-      title: "Food Package",
-      desc: "Meal plans covering diverse dietary needs, with customizable options.",
+      img: demoImg,
+      title: "Hotels ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
       id: 7,
-      title: "Athorized Attenders Package",
-      desc: " Essentials for attendants assisting travelers, including meals and accommodations.",
+      img: demoImg,
+      title: "Car - Local travel   ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
-  ];
-  return (
-    <>
-    <div class="flex justify-center mt-20 items-start min-h-screen flex-wrap">
-      <div class=" mx-auto">
-        <div class="block mb-4 mx-auto border-b border-slate-300 pb-2 max-w-[360px]">
-          <a
-            target="_blank"
-            class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
-          >
-            <b>Arogya Vihara Services</b>.
-          </a>
-        </div>
-        <div className="flex gap-10 flex-wrap justify-center">
-          {services.map((itm, index) => (
-            <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96 justify-between">
-              <div class="p-6">
-                <div class="flex items-center justify-between mb-2">
-                  <p class="block font-sans text-black antialiased font-medium leading-relaxed text-blue-gray-900">
-                    {itm.title}
-                  </p>
-                </div>
-                <p class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">
-                  {itm.desc}
-                </p>
-              </div>
-              {/* <div class="p-6 pt-0">
-                <a href="#" className="text-sm/6 font-semibold text-gray-900">
-                  Learn more <span aria-hidden="true">→</span>
-                </a>
-              </div> */}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-    <SemiFooter/>
-    </>
+    {
+      id: 8,
+      img: demoImg,
+      title: "Food services   ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
+      id: 9,
+      img: demoImg,
+      title: "Authorized attenders/guide to assist  ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+  ]
+  const packagesTab = [
+    {
+      id: 0,
+      img: demoImg,
+      title: "Medical Packages ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
+      id: 1,
+      img: demoImg,
+      title: "Surgical Packages ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+  ]
+  const supportTab = [
+    {
+      
+        id: 0,
+        img: demoImg,
+        title: "AI Call Center ",
+        desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+        // bullets: [
+        //   "ICU home care setup ",
+        //   "Post-operative Care ",
+        //   "Palliative care ",
+        // ],
+      
+    },
+    {
+      
+      id: 1,
+      img: demoImg,
+      title: "AI Chat Support  ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    
+  },
 
+  {
+      
+    id: 2,
+    img: demoImg,
+    title: "WhatsApp and Email Support ",
+    desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+    // bullets: [
+    //   "ICU home care setup ",
+    //   "Post-operative Care ",
+    //   "Palliative care ",
+    // ],
+  
+}
+  ]
+  const openModal = (card) => {
+    setSelectedCard(card);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCard(null); // Clear selected card
+  };
+  return (
+    // <>
+    <div className="flex flex-wrap flex-col justify-center gap-0">
+      <div class="block mb0 mx-auto border-b mt-10 border-slate-300 pb-0 max-w-[360px]">
+        <a
+          target="_blank"
+          class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
+        >
+          <b>Arogya Vihara Services</b>.
+        </a>
+      </div>
+      <ul className="flex  row mx-auto gap-5  mt-12 items-center">
+        {tabs.map((itm, index) => (
+          <li
+            onClick={() => setViharaTab(itm.name)}
+            className={`cursor-pointer px-2 pb-3 list-none text-base-grey ${
+              viharaTab === itm.name && "text-base-primary border-b font-bold"
+            }`}
+            key={index}
+          >
+            {itm.name}
+          </li>
+        ))}
+      </ul>
+
+      <div className="flex flex-wrap justify-center gap-10">
+        {(viharaTab === "Services"
+          ? servicesTab
+          : viharaTab === "Packages"
+          ? packagesTab
+          : supportTab
+        ).map((card, index) => (
+          <Card
+            key={index}
+            title={card.title}
+            description={card.desc}
+            bullet={card.bullets}
+            imageUrl={card.img}
+            onReadMore={() => openModal(card)}
+          />
+        ))}
+      </div>
+      <SemiFooter />
+
+      {/* Render the modal */}
+      {selectedCard && (
+        <ViewMoreModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          title={selectedCard.title} // Match 'title' with 'title' in servicesTabs
+          description={selectedCard.desc} // Match 'desc' with 'description'
+          bullet={selectedCard.bullets} // Match 'bullets' with 'bullet'
+        />
+      )}
+    </div>
   );
 }

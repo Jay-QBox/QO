@@ -1,149 +1,367 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Card from "./Card";
+import ViewMoreModal from "./ViewMoreModal";
 import SemiFooter from "./SemiFooter";
-import { MdAppRegistration } from "react-icons/md";
-import { AiFillProduct } from "react-icons/ai";
-import { IoSearch } from "react-icons/io5";
-import { IoIosCart } from "react-icons/io";
-import { MdSpatialTracking } from "react-icons/md";
-import { MdReviews } from "react-icons/md";
-import { MdAdminPanelSettings } from "react-icons/md";
-import { FaPrescriptionBottleAlt } from "react-icons/fa";
-import { BiSolidDiscount } from "react-icons/bi";
-import { MdOutlineSupportAgent } from "react-icons/md";
-import { MdPayments } from "react-icons/md";
-import { MdOutlineInventory } from "react-icons/md";
-import gruha from "../assets/im.webp"
-
+import demoImg from "../assets/gruha.png";
 
 export default function InstaMed() {
-  const services = [
+
+const [isModalOpen, setIsModalOpen] = useState(false);
+const [selectedCard, setSelectedCard] = useState(null);
+const [instaTab, setInstaTab] = useState("Insta Pharma");
+
+  
+  const tabs = [
     {
       id: 0,
-      title: "Vendor Registration and Dashboard",
-      icon:<MdAppRegistration style={{ fontSize: '40px' }}/>,
-      desc: "Allow vendors to register easily and manage their own stores through a personalized dashboard. Vendors can upload products, track orders, and manage inventory, making it user-friendly for pharmacy owners.",
+      name: "Insta Pharma",
     },
     {
       id: 1,
-      icon:<AiFillProduct style={{ fontSize: '40px' }}/>,
-      title: "Product Management",
-      desc: " Vendors can add, edit, and delete their medicine listings, including detailed descriptions, dosages, prices, and images. This feature ensures that customers receive accurate and up-to-date product information.",
+      name: "Insta RLab",
     },
     {
       id: 2,
-      icon:<IoSearch style={{ fontSize: '40px' }} />,
-
-      title: "Search and Filter Options",
-      desc: "Implement advanced search and filtering options for users to easily find medicines by name, category, brand, or price range. This enhances user experience by making product discovery simple and efficient.",
+      name: "Insta PLab",
+    },
+  ]
+  const pharmaTab = [
+    {
+      id: 0,
+      img: demoImg,
+      title: "Onboarding Pharmacies ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
-      icon:<IoIosCart style={{ fontSize: '40px' }}/>,
+      id: 1,
+      img: demoImg,
+      title: "Search/Display Nearby Pharmacy  ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
+      id: 2,
+      img: demoImg,
+      title: "Place order for medicine ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
       id: 3,
-      title: "Shopping Cart and Checkout",
-      desc: " A user-friendly shopping cart that allows customers to add multiple items and proceed to checkout seamlessly. This feature should support various payment options, including credit/debit cards, digital wallets, and cash on delivery.",
+      img: demoImg,
+      title: "Payments",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
-      icon:<MdSpatialTracking style={{ fontSize: '40px' }}/>,
       id: 4,
-      title: "Order Tracking",
-      desc: " Provide customers with real-time order tracking updates. Users can view the status of their orders, including processing, shipping, and delivery, enhancing transparency and customer satisfaction.",
+      img: demoImg,
+      title: "Historical Data ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
-      id: 5,      icon:<MdReviews style={{ fontSize: '40px' }}/>,
-
-      title: "Rating and Reviews",
-      desc: " Enable customers to leave ratings and reviews for products and vendors. This feature builds trust and helps future customers make informed decisions based on others' experiences.",
+      id: 5,
+      img: demoImg,
+      title: "Prescription Display  ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
-      icon:<MdAdminPanelSettings style={{ fontSize: '40px' }}/>,
-      id: 6,
-      title: "Admin Panel",
-      desc: "A comprehensive admin panel for site administrators to oversee vendor registrations, manage product listings, track sales, and handle disputes. This feature ensures smooth operations and effective management of the marketplace.",
-    },
-    {
-      icon:<FaPrescriptionBottleAlt style={{ fontSize: '40px' }}/>,
       id: 7,
-      title: "Prescription Upload",
-      desc: "Allow customers to upload prescriptions for medicines that require a doctor's approval. This feature enhances compliance and safety, ensuring customers receive the correct medications.",
+      img: demoImg,
+      title: "Subscription & Package model ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
-      icon:<BiSolidDiscount style={{ fontSize: '40px' }}/>,
       id: 8,
-      title: "Discounts and Promotions",
-      desc: " Enable vendors to create promotional campaigns, offer discounts, and manage coupon codes. This encourages sales and attracts more customers to the platform.",
+      img: demoImg,
+      title: "Individual Profile maintenance ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    }
+  ]
+  const rlabTab = [
+    {
+      id: 0,
+      img: demoImg,
+      title: "Onboarding R Lab",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
-      icon:<MdOutlineSupportAgent style={{ fontSize: '40px' }}/>,
-      id: 9,
-      title: "Customer Support",
-      desc: ": Offer a dedicated customer support system via chat, email, or phone. This feature helps address user queries and concerns promptly, improving overall customer satisfaction.",
+      id: 1,
+      img: demoImg,
+      title: "Search/Display Nearby Radiology lab  ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
-      icon:<MdPayments style={{ fontSize: '40px' }}/>,
-      id: 10,
-      title: "Secure Payment Gateway",
-      desc: " Integrate secure payment gateways to ensure safe transactions for users. This feature builds trust and provides peace of mind when purchasing medicines online.",
+      id: 2,
+      img: demoImg,
+      title: "Booking slots for scanning ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
+      id: 3,
+      img: demoImg,
+      title: "Payments ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
 
     {
-      icon:<MdOutlineInventory style={{ fontSize: '40px' }}/>,
-      id: 11,
-      title: "Inventory Management",
-      desc: "Vendors can manage their stock levels effectively, receive notifications for low inventory, and prevent stockouts. This feature ensures product availability and streamlines operations.",
+      id: 4,
+      img: demoImg,
+      title: "Historical data   ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
-      icon:<MdOutlineInventory style={{ fontSize: '40px' }}/>,
-      id: 12,
-      title: "Blood Test",
-      desc: "Vendors can manage their stock levels effectively, receive notifications for low inventory, and prevent stockouts. This feature ensures product availability and streamlines operations.",
+      id: 5,
+      img: demoImg,
+      title: "Subscription & Package model   ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
-      icon:<MdOutlineInventory style={{ fontSize: '40px' }}/>,
-      id: 13,
-      title: "Radio Test",
-      desc: "Vendors can manage their stock levels effectively, receive notifications for low inventory, and prevent stockouts. This feature ensures product availability and streamlines operations.",
+      id: 6,
+      img: demoImg,
+      title: "Individual Profile maintenance  ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
-  ];
+    {
+      id: 7,
+      img: demoImg,
+      title: "Reports display",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    
+
+  ]
+  const plabTab = [
+    {
+      id: 0,
+      img: demoImg,
+      title: "Onboarding P Lab",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
+      id: 1,
+      img: demoImg,
+      title: "Search/Display Nearby Pathology lab  ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
+      id: 2,
+      img: demoImg,
+      title: "Booking slots for sample collection ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
+      id: 3,
+      img: demoImg,
+      title: "Payments ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+
+    {
+      id: 4,
+      img: demoImg,
+      title: "Historical data   ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
+      id: 5,
+      img: demoImg,
+      title: "Subscription & Package model   ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
+      id: 6,
+      img: demoImg,
+      title: "Individual Profile maintenance  ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+    {
+      id: 7,
+      img: demoImg,
+      title: "Reports display",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+  ]
+  const openModal = (card) => {
+    setSelectedCard(card);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCard(null); // Clear selected card
+  };
   return (
-    <>
-    <div class="flex justify-center mt-20 items-start min-h-screen flex-wrap">
-      <div class=" mx-auto">
-        <div class="block mb-4 mx-auto border-b border-slate-300 pb-2 max-w-[360px]">
-          <a
-            target="_blank"
-            class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
-          >
-            <b>InstaMed Services</b>.
-          </a>
-        </div>
-        <div className="flex gap-10 flex-wrap justify-center">
-          {services.map((itm, index) => (
-            <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96 justify-between">
-              <div class="p-6">
-                <div >{itm.icon}</div>
-                {/* <img src={gruha} alt="" className="mb-2" /> */}
-                <div class="flex items-center justify-between mb-2">
-                  <p class="block font-sans text-black antialiased font-medium leading-relaxed text-blue-gray-900">
-                    {itm.title}
-                  </p>
-                </div>
-                <p class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">
-                  {itm.desc}
-                </p>
-              </div>
-              {/* <div class="p-6 pt-0">
-                <a href="#" className="text-sm/6 font-semibold text-gray-900">
-                  Learn more <span aria-hidden="true">→</span>
-                </a>
-              </div> */}
-            </div>
-          ))}
-        </div>
+    // <>
+    <div className="flex flex-wrap flex-col justify-center gap-0">\
+    <div class="block mb0 mx-auto border-b mt-10 border-slate-300 pb-0 max-w-[360px]">
+        <a
+          target="_blank"
+          class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
+        >
+          <b>Lazy Meds Services</b>.
+        </a>
       </div>
+      <ul className="flex  row mx-auto gap-5  mt-12 items-center">
+        {tabs.map((itm, index) => (
+          <li
+            onClick={() => setInstaTab(itm.name)}
+            className={`cursor-pointer px-2 pb-3 list-none text-base-grey ${
+              instaTab === itm.name && "text-base-primary border-b font-bold"
+            }`}
+            key={index}
+          >
+            {itm.name}
+          </li>
+        ))}
+      </ul>
+
+      <div className="flex flex-wrap justify-center gap-10">
+        {(instaTab === "Insta Pharma"
+          ? pharmaTab
+          : instaTab === "Insta RLab"
+          ? rlabTab
+          : plabTab
+        ).map((card, index) => (
+          <Card
+            key={index}
+            title={card.title}
+            description={card.desc}
+            bullet={card.bullets}
+            imageUrl={card.img}
+            onReadMore={() => openModal(card)}
+          />
+        ))}
+      </div>
+      <SemiFooter />
+
+      {/* Render the modal */}
+      {selectedCard && (
+        <ViewMoreModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          title={selectedCard.title} // Match 'title' with 'title' in servicesTabs
+          description={selectedCard.desc} // Match 'desc' with 'description'
+          bullet={selectedCard.bullets} // Match 'bullets' with 'bullet'
+        />
+      )}
     </div>
-    <SemiFooter/>
-
-    </>
-
   );
 }
