@@ -3,11 +3,13 @@ import Card from "./Card";
 import ViewMoreModal from "./ViewMoreModal";
 import SemiFooter from "./SemiFooter";
 import demoImg from "../assets/gruha.png";
+import SidebarG from "./SidebarG";
 const ParentComponent = () => {
   // const [cards, setCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [gruhaTab, setGruhaTab] = useState("Services");
+  const [selectedCategory, setSelectedCategory] = useState("Services");
 
   const tabs = [
     {
@@ -286,60 +288,53 @@ const ParentComponent = () => {
     setSelectedCard(null); // Clear selected card
   };
   console.log(gruhaTab);
+
+  const currentCards =
+    selectedCategory === "Services"
+      ? servicesTabs
+      : selectedCategory === "Packages"
+      ? packagesTabs
+      : supportTabs
+
   return (
     // <>
-    <div className="flex flex-wrap flex-col justify-center gap-0">
-      <div class="block mb0 mx-auto border-b mt-10 border-slate-300 pb-0 max-w-[360px]">
-        <a
-          target="_blank"
-          class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
-        >
-          <b>Arogya Guhara Services</b>
-        </a>
-      </div>
-      <ul className="flex  row mx-auto gap-5  mt-12 items-center">
-        {tabs.map((itm, index) => (
-          <li
-            onClick={() => setGruhaTab(itm.name)}
-            className={`cursor-pointer px-2 pb-3 list-none text-slate-700 ${
-              gruhaTab === itm.name && "text-base-primary border-b font-bold"
-            }`}
-            key={index}
-          >
-            {itm.name}
-          </li>
-        ))}
-      </ul>
+    <div className="flex">
+      {/* Sidebar */}
+      <SidebarG
+        setSelectedCategory={setSelectedCategory}
+        selectedCategory={selectedCategory}
+        serviceTabs = {servicesTabs}
+      />
 
-      <div className="flex flex-wrap justify-center gap-10">
-        {(gruhaTab === "Services"
-          ? servicesTabs
-          : gruhaTab === "Packages"
-          ? packagesTabs
-          : supportTabs
-        ).map((card, index) => (
-          <Card
-            key={index}
-            title={card.title}
-            description={card.desc}
-            bullet={card.bullets}
-            imageUrl={card.img}
-            onReadMore={() => openModal(card)}
+      {/* Main Panel */}
+      <div className="flex-grow justify-center items-center p-5 ml-64">
+        {" "}
+        {/* Adjust the margin to prevent overlap */}
+        <h2 className="text-2xl font-bold mb-4">{selectedCategory}</h2>
+        {/* Card Display */}
+        <div className="flex flex-wrap justify-center items-center gap-4">
+          {currentCards.map((card, index) => (
+            <Card
+              key={index}
+              title={card.title}
+              description={card.desc}
+              imageUrl={card.img}
+              onReadMore={() => openModal(card)}
+            />
+          ))}
+        </div>
+        <SemiFooter />
+        {/* View More Modal */}
+        {selectedCard && (
+          <ViewMoreModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            title={selectedCard.title}
+            description={selectedCard.desc}
+            bullet={selectedCard.bullets}
           />
-        ))}
+        )}
       </div>
-      <SemiFooter />
-
-      {/* Render the modal */}
-      {selectedCard && (
-        <ViewMoreModal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          title={selectedCard.title} // Match 'title' with 'title' in servicesTabs
-          description={selectedCard.desc} // Match 'desc' with 'description'
-          bullet={selectedCard.bullets} // Match 'bullets' with 'bullet'
-        />
-      )}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Sidebar = ({ setSelectedCategory ,selectedCategory}) => {
+const Sidebar = ({ setSelectedCategory, selectedCategory, serviceTabs }) => {
   const [isPackageOpen, setIsPackageOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Start with sidebar open
 
@@ -15,7 +15,7 @@ const Sidebar = ({ setSelectedCategory ,selectedCategory}) => {
   };
 
   return (
-    <div className="relative h-full">
+    <div className="relative h-full scroll">
       {/* Toggle Button for Mobile View */}
       <button
         className="lg:hidden p-2 m-2 text-gray-800 bg-white border border-orange-500 rounded-md"
@@ -30,30 +30,48 @@ const Sidebar = ({ setSelectedCategory ,selectedCategory}) => {
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <ul className="flex flex-col gap-2">
+        <ul className="flex flex-col gap-2 scroll">
           {/* Package Menu */}
           <li
-            className={`py-2 px-4 hover:bg-gray-200 cursor-pointer rounded border-orange-500 ${selectedCategory === "All Packages" && "bg-gray-200"}`}
+            className={`py-2 px-4 hover:bg-gray-200 cursor-pointer rounded border-orange-500 ${
+              selectedCategory === "Services" && "bg-gray-200"
+            }`}
             onClick={() => setIsPackageOpen(!isPackageOpen)}
           >
-            Package
+            Services
           </li>
           {isPackageOpen && (
             <ul className="pl-8 flex flex-col gap-2 ">
+              {serviceTabs.map((itm) => (
+                <li
+                  className={`py-2 px-4 text-sm hover:bg-gray-200 rounded cursor-pointer ${
+                    selectedCategory === itm.title && "bg-gray-200"
+                  }`}
+                //   onClick={() => handleSubMenuClick(itm.title)}
+                >
+                  {itm.title}
+                </li>
+              ))}
               <li
-                className={ `py-2 px-4 hover:bg-gray-200 rounded cursor-pointer ${selectedCategory === "Pharma Lab" && "bg-gray-200"}`}
+                className={`py-2 px-4 hover:bg-gray-200 rounded cursor-pointer ${
+                  selectedCategory === "Pharma Lab" && "bg-gray-200"
+                }`}
                 onClick={() => handleSubMenuClick("Pharma Lab")}
               >
                 Pharma Lab
               </li>
               <li
-                className={ `py-2 px-4 hover:bg-gray-200 rounded cursor-pointer ${selectedCategory === "R Lab" && "bg-gray-200"}`}
+                className={`py-2 px-4 hover:bg-gray-200 rounded cursor-pointer ${
+                  selectedCategory === "R Lab" && "bg-gray-200"
+                }`}
                 onClick={() => handleSubMenuClick("R Lab")}
               >
                 R Lab
               </li>
               <li
-                className={ `py-2 px-4 hover:bg-gray-200 rounded cursor-pointer ${selectedCategory === "P Lab" && "bg-gray-200"}`}
+                className={`py-2 px-4 hover:bg-gray-200 rounded cursor-pointer ${
+                  selectedCategory === "P Lab" && "bg-gray-200"
+                }`}
                 onClick={() => handleSubMenuClick("P Lab")}
               >
                 P Lab
@@ -62,7 +80,17 @@ const Sidebar = ({ setSelectedCategory ,selectedCategory}) => {
           )}
           {/* Customer Support */}
           <li
-            className={`py-2 px-4 hover:bg-gray-200 cursor-pointer rounded border-orange-500 ${selectedCategory === "Customer Support" && "bg-gray-200"}`}
+            className={`py-2 px-4 hover:bg-gray-200 cursor-pointer rounded border-orange-500 ${
+              selectedCategory === "Packages" && "bg-gray-200"
+            }`}
+            onClick={() => handleSubMenuClick("Packages")}
+          >
+            Packages
+          </li>
+          <li
+            className={`py-2 px-4 hover:bg-gray-200 cursor-pointer rounded border-orange-500 ${
+              selectedCategory === "Customer Support" && "bg-gray-200"
+            }`}
             onClick={() => handleSubMenuClick("Customer Support")}
           >
             Customer Support

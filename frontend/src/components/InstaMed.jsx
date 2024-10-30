@@ -95,7 +95,7 @@ export default function InstaMed() {
   return (
     <div className="flex">
       {/* Sidebar */}
-      <Sidebar setSelectedCategory={setSelectedCategory} />
+      <Sidebar setSelectedCategory={setSelectedCategory} selectedCategory = {selectedCategory}/>
 
       {/* Main Panel */}
       <div className="flex-grow p-5 ml-64"> {/* Adjust the margin to prevent overlap */}
