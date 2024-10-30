@@ -5,12 +5,10 @@ import SemiFooter from "./SemiFooter";
 import demoImg from "../assets/gruha.png";
 
 export default function Vihara() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [viharaTab, setViharaTab] = useState("Services");
 
-const [isModalOpen, setIsModalOpen] = useState(false);
-const [selectedCard, setSelectedCard] = useState(null);
-const [viharaTab, setViharaTab] = useState("Services");
-
-  
   const tabs = [
     {
       id: 0,
@@ -24,7 +22,7 @@ const [viharaTab, setViharaTab] = useState("Services");
       id: 2,
       name: "Customer Support ",
     },
-  ]
+  ];
   const servicesTab = [
     {
       id: 0,
@@ -125,7 +123,7 @@ const [viharaTab, setViharaTab] = useState("Services");
       //   "Palliative care ",
       // ],
     },
-  ]
+  ];
   const packagesTab = [
     {
       id: 0,
@@ -149,23 +147,20 @@ const [viharaTab, setViharaTab] = useState("Services");
       //   "Palliative care ",
       // ],
     },
-  ]
+  ];
   const supportTab = [
     {
-      
-        id: 0,
-        img: demoImg,
-        title: "AI Call Center ",
-        desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-        // bullets: [
-        //   "ICU home care setup ",
-        //   "Post-operative Care ",
-        //   "Palliative care ",
-        // ],
-      
+      id: 0,
+      img: demoImg,
+      title: "AI Call Center ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
     },
     {
-      
       id: 1,
       img: demoImg,
       title: "AI Chat Support  ",
@@ -175,23 +170,20 @@ const [viharaTab, setViharaTab] = useState("Services");
       //   "Post-operative Care ",
       //   "Palliative care ",
       // ],
-    
-  },
+    },
 
-  {
-      
-    id: 2,
-    img: demoImg,
-    title: "WhatsApp and Email Support ",
-    desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-    // bullets: [
-    //   "ICU home care setup ",
-    //   "Post-operative Care ",
-    //   "Palliative care ",
-    // ],
-  
-}
-  ]
+    {
+      id: 2,
+      img: demoImg,
+      title: "WhatsApp and Email Support ",
+      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
+      // bullets: [
+      //   "ICU home care setup ",
+      //   "Post-operative Care ",
+      //   "Palliative care ",
+      // ],
+    },
+  ];
   const openModal = (card) => {
     setSelectedCard(card);
     setIsModalOpen(true);

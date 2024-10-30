@@ -5,12 +5,10 @@ import SemiFooter from "./SemiFooter";
 import demoImg from "../assets/gruha.png";
 
 export default function InstaMed() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [instaTab, setInstaTab] = useState("Insta Pharma");
 
-const [isModalOpen, setIsModalOpen] = useState(false);
-const [selectedCard, setSelectedCard] = useState(null);
-const [instaTab, setInstaTab] = useState("Insta Pharma");
-
-  
   const tabs = [
     {
       id: 0,
@@ -24,7 +22,7 @@ const [instaTab, setInstaTab] = useState("Insta Pharma");
       id: 2,
       name: "Insta PLab",
     },
-  ]
+  ];
   const pharmaTab = [
     {
       id: 0,
@@ -113,8 +111,8 @@ const [instaTab, setInstaTab] = useState("Insta Pharma");
       //   "Post-operative Care ",
       //   "Palliative care ",
       // ],
-    }
-  ]
+    },
+  ];
   const rlabTab = [
     {
       id: 0,
@@ -205,9 +203,7 @@ const [instaTab, setInstaTab] = useState("Insta Pharma");
       //   "Palliative care ",
       // ],
     },
-    
-
-  ]
+  ];
   const plabTab = [
     {
       id: 0,
@@ -298,7 +294,7 @@ const [instaTab, setInstaTab] = useState("Insta Pharma");
       //   "Palliative care ",
       // ],
     },
-  ]
+  ];
   const openModal = (card) => {
     setSelectedCard(card);
     setIsModalOpen(true);
@@ -310,8 +306,9 @@ const [instaTab, setInstaTab] = useState("Insta Pharma");
   };
   return (
     // <>
-    <div className="flex flex-wrap flex-col justify-center gap-0">\
-    <div class="block mb0 mx-auto border-b mt-10 border-slate-300 pb-0 max-w-[360px]">
+    <div className="flex flex-wrap flex-col justify-center gap-0">
+      \
+      <div class="block mb0 mx-auto border-b mt-10 border-slate-300 pb-0 max-w-[360px]">
         <a
           target="_blank"
           class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
@@ -332,7 +329,6 @@ const [instaTab, setInstaTab] = useState("Insta Pharma");
           </li>
         ))}
       </ul>
-
       <div className="flex flex-wrap justify-center gap-10">
         {(instaTab === "Insta Pharma"
           ? pharmaTab
@@ -351,7 +347,6 @@ const [instaTab, setInstaTab] = useState("Insta Pharma");
         ))}
       </div>
       <SemiFooter />
-
       {/* Render the modal */}
       {selectedCard && (
         <ViewMoreModal
