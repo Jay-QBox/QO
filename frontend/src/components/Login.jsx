@@ -27,18 +27,18 @@ const Login = ({ onLoginSuccess }) => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 mb-4 border bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-base"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-4 py-2 mb-6 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 mb-6  bg-white  border rounded-lg focus:outline-none focus:ring-2 focus:ring-base"
         />
         <button
           onClick={handleLogin}
-          className="w-full py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full py-2 text-white bg-base rounded-lg hover:bg-base focus:outline-none focus:ring-2 focus:ring-base"
         >
           Login
         </button>
