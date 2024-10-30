@@ -59,6 +59,25 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Custom Scrollbar by Jaymin Rabari */ 
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px; 
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 10px; 
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: #555; 
+}
+/* END - Custom Scrollbar by Jaymin Rabari */ 
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

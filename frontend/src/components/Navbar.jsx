@@ -10,12 +10,10 @@ import { Link, useLocation } from "react-router-dom";
 const navigation = [
   { name: "Home", href: "/", id: 0 },
   { name: "Platforms", href: "/services", id: 1 },
-  { name: "Contact Us", href: "https://qo-box.com/contact.html", id: 2 },
-  {
-    name: "About Us",
-    href: "https://qo-box.com/about.html#story-section",
-    id: 3,
-  },
+  { name: "Announcement", href: "/announcement", id: 4 },
+  { name: "Analysis", href: "/analysis", id: 5 }, // Added by jay
+  { name: "Contact Us", href: "https://qo-box.com/contact.html", id: 2 }, // added by jay
+  { name: "About Us", href: "https://qo-box.com/about.html#story-section", id: 3 },
 ];
 
 function classNames(...classes) {

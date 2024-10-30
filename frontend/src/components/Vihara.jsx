@@ -27,18 +27,13 @@ export default function Vihara() {
     {
       id: 0,
       img: "https://qobox320-my.sharepoint.com/:i:/g/personal/sravani_g_qo-box_in/EZ1w81KpO0dDk1pUHRVyBr0BJtNX03bh3PYAlELWuGnhFA?e=4lEXRh",
-      title: "Hospitals",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "ICU home care setup ",
-      //   "Post-operative Care ",
-      //   "Palliative care ",
-      // ],
+      title: "ICU home care setup ",
+      desc: "ICU home care setups replicate critical care environments within the patients home, ensuring continuous monitoring and treatment for patients with chronic or life-threatening conditions.",
     },
     {
       id: 1,
       img: demoImg,
-      title: "Translators",
+      title: "Post-operative Care",
       desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
       // bullets: [
       //   "ICU home care setup ",
