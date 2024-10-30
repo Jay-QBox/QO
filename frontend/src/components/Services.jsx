@@ -25,7 +25,7 @@ export default function Services() {
     },
     {
       id: 2,
-      title: "Insta Meds",
+      title: "Lazy Meds",
       img: im,
 
       desc: "Insta Medical Services provides rapid, reliable healthcare solutions right when you need them, ensuring accessible and efficient medical care for all.",
@@ -42,7 +42,7 @@ export default function Services() {
             // href="#"
             class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
           >
-            <b>Platforms</b>.
+            <b>Platforms</b>
           </a>
         </div>
         <div className="flex gap-10 flex-wrap justify-center">

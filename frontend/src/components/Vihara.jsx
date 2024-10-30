@@ -201,7 +201,7 @@ export default function Vihara() {
           target="_blank"
           class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
         >
-          <b>Arogya Vihara Services</b>.
+          <b>Arogya Vihara Services</b>
         </a>
       </div>
       <ul className="flex  row mx-auto gap-5  mt-12 items-center">

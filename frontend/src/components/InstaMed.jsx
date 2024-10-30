@@ -307,13 +307,12 @@ export default function InstaMed() {
   return (
     // <>
     <div className="flex flex-wrap flex-col justify-center gap-0">
-      \
       <div class="block mb0 mx-auto border-b mt-10 border-slate-300 pb-0 max-w-[360px]">
         <a
           target="_blank"
           class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
         >
-          <b>Lazy Meds Services</b>.
+          <b>Lazy Meds Services</b>
         </a>
       </div>
       <ul className="flex  row mx-auto gap-5  mt-12 items-center">
