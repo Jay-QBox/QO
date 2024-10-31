@@ -1,318 +1,79 @@
-import React, { useEffect, useState } from "react";
+// Created By Jaymin Entire code - add comment for re-change or bug fix
+import React, { useState } from "react";
 import Card from "./Card";
 import ViewMoreModal from "./ViewMoreModal";
 import SemiFooter from "./SemiFooter";
-import demoImg from "../assets/gruha.png";
 import SidebarG from "./SidebarG";
-const ParentComponent = () => {
-  // const [cards, setCards] = useState([]);
+import {
+  homecarePost,
+  homecareMedServices,
+  homecareEmergencyServices,
+  homecareEquipment,
+  homecareMonitoringDevices,
+  homecareElderly,
+  homecareFitness,
+  nearbyRehabCenters,
+  nearbyTherapyCenters,
+  endOfLifeCare,
+  homecareVaccination,
+  hospitalSearch,
+  nearbyClinics,
+  packages,
+  customerSupport,
+} from "../data/gruhaData";
+
+const Gruha = () => {
+  const [selectedCategory, setSelectedCategory] = useState("All Services");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [gruhaTab, setGruhaTab] = useState("Services");
-  const [selectedCategory, setSelectedCategory] = useState("Services");
 
-  const tabs = [
-    {
-      id: 0,
-      name: "Services",
-    },
-    {
-      id: 1,
-      name: "Packages",
-    },
-    {
-      id: 2,
-      name: "Customer Support ",
-    },
-  ];
-  const servicesTabs = [
-    {
-      id: 0,
-      img: demoImg,
-      title: "Homecare Post/Pre Hospital Services",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      bullets: [
-        "ICU home care setup ",
+  const currentCards =
+  selectedCategory === "Homecare Post/Pre Hospital Services"
+    ? homecarePost
+    : selectedCategory === "Homecare Med Services"
+    ? homecareMedServices
+    : selectedCategory === "Homecare Medical Emergency service"
+    ? homecareEmergencyServices
+    : selectedCategory === "Homecare/ Hospital equipments for rent/buy"
+    ? homecareEquipment
+    : selectedCategory === "Homecare Medical Monitoring devices"
+    ? homecareMonitoringDevices
+    : selectedCategory === "Homecare for Elderly people"
+    ? homecareElderly
+    : selectedCategory === "Homecare Fitness"
+    ? homecareFitness
+    : selectedCategory === "Nearby Rehab Centers"
+    ? nearbyRehabCenters
+    : selectedCategory === "Nearby Therapy Centers"
+    ? nearbyTherapyCenters
+    : selectedCategory === "End-of-life Care"
+    ? endOfLifeCare
+    : selectedCategory === "Homecare Vaccination"
+    ? homecareVaccination
+    : selectedCategory === "Hospital search within City and Across India"
+    ? hospitalSearch
+    : selectedCategory === "Nearby Clinics"
+    ? nearbyClinics
+    : selectedCategory === "Packages"
+    ? packages // Show the data for packages tab
+    : selectedCategory === "Customer Support"
+    ? customerSupport // Show the data for customer support tab
+    : [...homecarePost, ...homecareMedServices, ...homecareEmergencyServices, ...homecareEquipment, ...homecareMonitoringDevices, ...homecareElderly, ...homecareFitness, ...nearbyRehabCenters, ...nearbyTherapyCenters, ...endOfLifeCare, ...homecareVaccination, ...hospitalSearch, ...nearbyClinics]; // Show all services for "All Services"
 
-        "Post-operative Care ",
-
-        "Palliative care ",
-
-        "General/ ICU Nursing care  ",
-        "Care Taker/ Patient Attender ",
-      ],
-    },
-    {
-      id: 1,
-      img: demoImg,
-      title: "Homecare Med Services",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      bullets: [
-        "Doctor on Tele /video Call/ Home Visit ",
-        "Physiotherapy on Tele /video Call/ Home Visit ",
-        "Psychiatric Tele /video Call/ Home Visit ",
-      ],
-    },
-    {
-      id: 2,
-      img: demoImg,
-      title: "Homecare Medical Emergency service ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      bullets: ["Ambulance support ", "Emergency coordination and support "],
-    },
-    {
-      id: 3,
-      img: demoImg,
-      title: "Homecare/ Hospital equipments for rent/buy ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      bullets: [
-        "IV Infusion Setup ",
-
-        "Ryles Tube Setup",
-
-        "Urine Catheter Setup - Male/Female ",
-
-        "Mobility Aid Devices wheelchairs, walkers, walking stick etc",
-
-        "Home ECG and Xray ",
-
-        "Ambulatory BP ",
-
-        "Oxygen Concentrator ",
-
-        "Vaccinations @ Home ",
-
-        "Hospital Beds ",
-
-        "Air Mattress, bed backrest ",
-
-        "Medical Devices - nebulizer, suction machine, cardiac monitor, syringe pump, DVT pump, compression stockings",
-
-        "IV Infusion Setup ",
-
-        "Chemotherapy & Dialysis Support ",
-      ],
-    },
-    {
-      id: 4,
-      img: demoImg,
-      title: "Homecare Medical Monitoring devices ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      bullets: ["Heart", "BP", "Vital", "Diabetics"],
-    },
-    {
-      id: 5,
-      img: demoImg,
-      title: "Homecare for Elderly people ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      bullets: [
-        "Health monitoring devices",
-
-        "Diet & Nutrition @cloud kitchen ",
-
-        "Home safety & security - antiskid, cc cameras",
-        "Emergency Co-ordination ",
-
-        " Ambulance Support ",
-
-        " Hospitalization support ",
-
-        "Bedside Attendants ",
-
-        "Home Safety & Security ",
-
-        " Companion Service",
-
-        "Travel & Concierge",
-      ],
-    },
-    {
-      id: 6,
-      img: demoImg,
-      title: "Homecare Fitness  ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      bullets: [
-        "Online Gym Trainer ",
-
-        "Online Yoga Trainer ",
-
-        "Online Mental Health Trainer ",
-
-        "Online Nutrition & food providers",
-      ],
-    },
-    {
-      id: 7,
-      img: demoImg,
-      title: "Nearby Rehab Centers ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      bullets: [
-        "Cancer",
-
-        "Orthopedic Rehabilitation ",
-
-        " Cardiac Rehabilitation ",
-
-        "Pulmonary Rehabilitation ",
-        "Neurological Rehabilitation ",
-      ],
-    },
-    {
-      id: 8,
-      img: demoImg,
-      title: "Nearby Deaddiction centers ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      bullets: ["Drug", "Alcohol", "Detoxification"],
-    },
-    {
-      id: 9,
-      img: demoImg,
-      title: "Nearby Therapy Centers ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      bullets: ["Behavior", "Speech"],
-    },
-    {
-      id: 9,
-      img: demoImg,
-      title: "Nearby Therapy Centers ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      bullets: ["Behavior", "Speech"],
-    },
-    {
-      id: 9,
-      img: demoImg,
-      title: "End-of-life Care",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      bullets: ["Ice box ", " Traveling for last ride"],
-    },
-  ];
-  const packagesTabs = [
-    {
-      id: 0,
-      img: demoImg,
-      title: "Homecare Med Packages ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "Provides personalized healthcare at home",
-      //   "Assists with daily living activities",
-      //   "Monitors vital signs and medication",
-      //   "Supports patient comfort and mobility",
-      // ],
-    },
-    {
-      id: 1,
-      img: demoImg,
-      title: "Fitness Packages",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "Provides personalized healthcare at home",
-      //   "Assists with daily living activities",
-      //   "Monitors vital signs and medication",
-      //   "Supports patient comfort and mobility",
-      // ],
-    },
-    {
-      id: 2,
-      img: demoImg,
-      title: "Nearby rehab packages",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "Provides personalized healthcare at home",
-      //   "Assists with daily living activities",
-      //   "Monitors vital signs and medication",
-      //   "Supports patient comfort and mobility",
-      // ],
-    },
-  ];
-  const supportTabs = [
-    {
-      id: 0,
-      img: demoImg,
-      title: "AI Call Center ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "Provides personalized healthcare at home",
-      //   "Assists with daily living activities",
-      //   "Monitors vital signs and medication",
-      //   "Supports patient comfort and mobility",
-      // ],
-    },
-    {
-      id: 1,
-      img: demoImg,
-      title: "AI Chat Support ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "Provides personalized healthcare at home",
-      //   "Assists with daily living activities",
-      //   "Monitors vital signs and medication",
-      //   "Supports patient comfort and mobility",
-      // ],
-    },
-    {
-      id: 0,
-      img: demoImg,
-      title: "WhatsApp and Email Support ",
-      desc: "This card highlights the benefits of home care nursing, focusing on personalized healthcare support and patient well-being in a home setting.",
-      // bullets: [
-      //   "Provides personalized healthcare at home",
-      //   "Assists with daily living activities",
-      //   "Monitors vital signs and medication",
-      //   "Supports patient comfort and mobility",
-      // ],
-    },
-  ];
-
-  // useEffect(() => {
-  //   const fetchCards = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         "https://qobox-backbone.vercel.app/api/cards/view/category/gruh"
-  //       );
-  //       const data = await response.json();
-  //       setCards(data);
-  //     } catch (error) {
-  //       console.error("Error fetching the cards:", error);
-  //     }
-  //   };
-
-  //   fetchCards();
-  // }, []);
   const openModal = (card) => {
     setSelectedCard(card);
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedCard(null); // Clear selected card
-  };
-  console.log(gruhaTab);
-
-  const currentCards =
-    selectedCategory === "Services"
-      ? servicesTabs
-      : selectedCategory === "Packages"
-      ? packagesTabs
-      : supportTabs
+  const closeModal = () => setIsModalOpen(false);
 
   return (
-    // <>
     <div className="flex">
-      {/* Sidebar */}
-      <SidebarG
-        setSelectedCategory={setSelectedCategory}
-        selectedCategory={selectedCategory}
-        serviceTabs = {servicesTabs}
-      />
+      <SidebarG setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} />
 
-      {/* Main Panel */}
-      <div className="flex-grow justify-center items-center p-5 ml-64">
-        {" "}
-        {/* Adjust the margin to prevent overlap */}
+      <div className="flex-grow p-5 ml-64">
         <h2 className="text-2xl font-bold mb-4">{selectedCategory}</h2>
-        {/* Card Display */}
-        <div className="flex flex-wrap justify-center items-center gap-4">
+        <div className="flex flex-wrap gap-4">
           {currentCards.map((card, index) => (
             <Card
               key={index}
@@ -324,7 +85,6 @@ const ParentComponent = () => {
           ))}
         </div>
         <SemiFooter />
-        {/* View More Modal */}
         {selectedCard && (
           <ViewMoreModal
             isOpen={isModalOpen}
@@ -339,4 +99,4 @@ const ParentComponent = () => {
   );
 };
 
-export default ParentComponent;
+export default Gruha;

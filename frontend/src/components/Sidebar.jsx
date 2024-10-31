@@ -1,17 +1,25 @@
+// Created By Jaymin Entire code - add comment for re-change or bug fix
 import React, { useState } from "react";
 
-const Sidebar = ({ setSelectedCategory ,selectedCategory}) => {
+const Sidebar = ({ setSelectedCategory, selectedCategory }) => {
   const [isPackageOpen, setIsPackageOpen] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Start with sidebar open
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  // Function to handle submenu clicks
-  const handleSubMenuClick = (category) => {
+  // Categories and subcategories data
+  const categories = [
+    {
+      name: "Services",
+      subCategories: ["Pharma Lab", "R Lab", "P Lab"],
+      isExpandable: true,
+    },
+    { name: "Packages", isExpandable: false },
+    { name: "Customer Support", isExpandable: false },
+  ];
+
+  // Handles click for category or subcategory selection
+  const handleClick = (category, isSubcategory = false) => {
     setSelectedCategory(category);
-
-    // Check if the sidebar should close based on screen width
-    if (window.innerWidth < 768) {
-      setIsSidebarOpen(false); // Close sidebar on mobile
-    }
+    if (isSubcategory && window.innerWidth < 768) setIsSidebarOpen(false); // Close sidebar on mobile
   };
 
   return (
@@ -31,42 +39,38 @@ const Sidebar = ({ setSelectedCategory ,selectedCategory}) => {
         }`}
       >
         <ul className="flex flex-col gap-2">
-          {/* Package Menu */}
-          <li
-            className={`py-2 px-4 hover:bg-gray-200 cursor-pointer rounded border-orange-500 ${selectedCategory === "All Packages" && "bg-gray-200"}`}
-            onClick={() => setIsPackageOpen(!isPackageOpen)}
-          >
-            Package
-          </li>
-          {isPackageOpen && (
-            <ul className="pl-8 flex flex-col gap-2 ">
+          {categories.map(({ name, subCategories, isExpandable }) => (
+            <React.Fragment key={name}>
+              {/* Main Category */}
               <li
-                className={ `py-2 px-4 hover:bg-gray-200 rounded cursor-pointer ${selectedCategory === "Pharma Lab" && "bg-gray-200"}`}
-                onClick={() => handleSubMenuClick("Pharma Lab")}
+                className={`py-2 px-4 hover:bg-gray-200 cursor-pointer rounded border-orange-500 ${
+                  selectedCategory === name && "bg-gray-200"
+                }`}
+                onClick={() =>
+                  isExpandable ? setIsPackageOpen(!isPackageOpen) : handleClick(name)
+                }
               >
-                Pharma Lab
+                {name}
               </li>
-              <li
-                className={ `py-2 px-4 hover:bg-gray-200 rounded cursor-pointer ${selectedCategory === "R Lab" && "bg-gray-200"}`}
-                onClick={() => handleSubMenuClick("R Lab")}
-              >
-                R Lab
-              </li>
-              <li
-                className={ `py-2 px-4 hover:bg-gray-200 rounded cursor-pointer ${selectedCategory === "P Lab" && "bg-gray-200"}`}
-                onClick={() => handleSubMenuClick("P Lab")}
-              >
-                P Lab
-              </li>
-            </ul>
-          )}
-          {/* Customer Support */}
-          <li
-            className={`py-2 px-4 hover:bg-gray-200 cursor-pointer rounded border-orange-500 ${selectedCategory === "Customer Support" && "bg-gray-200"}`}
-            onClick={() => handleSubMenuClick("Customer Support")}
-          >
-            Customer Support
-          </li>
+
+              {/* Subcategories */}
+              {isExpandable && isPackageOpen && (
+                <ul className="pl-8 flex flex-col gap-2">
+                  {subCategories.map((sub) => (
+                    <li
+                      key={sub}
+                      className={`py-2 px-4 hover:bg-gray-200 rounded cursor-pointer ${
+                        selectedCategory === sub && "bg-gray-200"
+                      }`}
+                      onClick={() => handleClick(sub, true)}
+                    >
+                      {sub}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </React.Fragment>
+          ))}
         </ul>
       </div>
     </div>
