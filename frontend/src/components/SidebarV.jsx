@@ -1,7 +1,7 @@
 // Created By Jaymin Entire code - add comment for re-change or bug fix
 import React, { useState } from "react";
 
-const Sidebar = ({ setSelectedCategory, selectedCategory }) => {
+const SidebarV = ({ setSelectedCategory, selectedCategory }) => {
   const [isPackageOpen, setIsPackageOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
@@ -9,22 +9,8 @@ const Sidebar = ({ setSelectedCategory, selectedCategory }) => {
   const categories = [
     {
       name: "Services",
-      isExpandable: true,
-      subCategories: [
-        "Homecare Post/Pre Hospital Services",
-        "Homecare Med Services",
-        "Homecare Medical Emergency service",
-        "Homecare/ Hospital equipments for rent/buy",
-        "Homecare Medical Monitoring devices",
-        "Homecare for Elderly people",
-        "Homecare Fitness",
-        "Nearby Rehab Centers",
-        "Nearby Therapy Centers",
-        "End-of-life Care",
-        "Homecare Vaccination",
-        "Hospital search within City and Across India",
-        "Nearby Clinics",
-      ],
+      isExpandable: false,
+      // subCategories: [],
     },
     { name: "Packages", isExpandable: false },
     { name: "Customer Support", isExpandable: false },
@@ -93,4 +79,4 @@ const Sidebar = ({ setSelectedCategory, selectedCategory }) => {
   );
 };
 
-export default Sidebar;
+export default SidebarV;

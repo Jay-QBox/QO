@@ -1,5 +1,6 @@
 // Created By Jaymin Entire code - add comment for re-change or bug fix
 import demoImg from "../assets/gruha.png";
+import images from '../assets/imgs/img';
 
 // Homecare Post/Pre Hospital Services
 export const homecarePost = [
@@ -475,21 +476,21 @@ export const packages = [
 
 // Customer Support
 export const customerSupport = [
-  {
-    title: "AI Call Center",
-    desc: "Our AI Call Center provides 24/7 support, handling inquiries and resolving issues efficiently. With advanced voice recognition and natural language processing, it ensures quick and accurate responses to customer queries.",
-    img: "CustomerSupport_AV.png",
-  },
-  {
-    title: "AI Chat Support",
-    desc: "AI Chat Support offers instant assistance through our website and mobile app, providing answers to common questions, troubleshooting, and service requests at any time.",
-    img: demoImg, // Placeholder image, replace with actual image if available
-  },
-  {
-    title: "WhatsApp and Email Support",
-    desc: "Customers can reach out via WhatsApp or email for personalized support. Our team is dedicated to responding promptly to ensure all inquiries are addressed efficiently.",
-    img: demoImg, // Placeholder image, replace with actual image if available
-  },
+    {
+        title: "AI Call Center",
+        desc: "Our AI Call Center provides 24/7 support, handling inquiries and resolving issues efficiently. With advanced voice recognition and natural language processing, it ensures quick and accurate responses to customer queries.",
+        img: images.call,
+      },
+      {
+        title: "AI Chat Support",
+        desc: "AI Chat Support offers instant assistance through our website and mobile app, providing answers to common questions, troubleshooting, and service requests at any time.",
+        img: images.customer, // Placeholder image, replace with actual image if available
+      },
+      {
+        title: "WhatsApp and Email Support",
+        desc: "Customers can reach out via WhatsApp or email for personalized support. Our team is dedicated to responding promptly to ensure all inquiries are addressed efficiently.",
+        img: demoImg, // Placeholder image, replace with actual image if available
+      },
 ];
 
 // Exporting all data
