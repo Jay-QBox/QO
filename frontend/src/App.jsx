@@ -8,6 +8,9 @@ import Gruha from "./components/Gruha";
 import Vihara from "./components/Vihara";
 import InstaMed from "./components/InstaMed";
 import Login from "./components/Login";
+import Oppertunities from "./components/Oppertunities/Oppertunities";
+import Strategies from "./components/Strategies/Strategies";
+// import OppertunitiesSingle from "./components/Oppertunities/OppertunitiesSingle";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -48,6 +51,12 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
+              {/* <Route path="/opportunities" element={<OppertunitiesSingle />} /> */}
+              <Route path="/opportunities" element={<Oppertunities />} />
+              <Route path="/pandg" element={<p>P and G</p>} />
+              <Route path="/analysis" element={<p>Analysis</p>} />
+              <Route path="/strategies" element={<p>Strategies</p>} />
+              <Route path="/revenues" element={<p>Revenue</p>} />
               <Route path="/services/ag" element={<Gruha />} />
               <Route path="/services/av" element={<Vihara />} />
               <Route path="/services/im" element={<InstaMed />} />
