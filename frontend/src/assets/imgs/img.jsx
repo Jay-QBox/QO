@@ -61,7 +61,7 @@ import AG_Diet_Nutrition_at_cloud_kitchen from "./AG_Homecare_for_Elderly_people
 import AG_Emergency_Co_ordination from "./AG_Homecare_for_Elderly_people/AG_Emergency_Co_ordination.webp";
 import AG_Health_monitoring_devices from "./AG_Homecare_for_Elderly_people/AG_Health_monitoring_devices.webp";
 import AG_Home_Safety_Security from "./AG_Homecare_for_Elderly_people/AG_Home_safety_security.webp";
-import AG_Home_Safety_Security2 from "./AG_Homecare_for_Elderly_people/AG_Home_safety_security2.webp";
+import AG_Home_Safety_Security2 from "./AG_Homecare_for_Elderly_people/AG_Home_Safety_Security2.webp";
 import AG_Hospitalization_support_elderly_people from "./AG_Homecare_for_Elderly_people/AG_Hospitalization_support_elderly_people.webp";
 import AG_Tavel_Concierge from "./AG_Homecare_for_Elderly_people/AG_Tavel_Concierge.webp";
 import AG_Homecare_Elderly_people from "./AG_Homecare_for_Elderly_people/AG_Homecare_Elderly_people.webp";
