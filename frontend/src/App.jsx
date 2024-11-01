@@ -10,6 +10,9 @@ import InstaMed from "./components/InstaMed";
 import Login from "./components/Login";
 import Oppertunities from "./components/Oppertunities/Oppertunities";
 import Strategies from "./components/Strategies/Strategies";
+import PandG from "./components/PandG";
+import Analysis from "./components/Analysis";
+import Revenue from "./components/Revenue";
 // import OppertunitiesSingle from "./components/Oppertunities/OppertunitiesSingle";
 
 const App = () => {
@@ -53,10 +56,12 @@ const App = () => {
               <Route path="/services" element={<Services />} />
               {/* <Route path="/opportunities" element={<OppertunitiesSingle />} /> */}
               <Route path="/opportunities" element={<Oppertunities />} />
-              <Route path="/pandg" element={<p>P and G</p>} />
-              <Route path="/analysis" element={<p>Analysis</p>} />
-              <Route path="/strategies" element={<p>Strategies</p>} />
-              <Route path="/revenues" element={<p>Revenue</p>} />
+
+              <Route path="/pandg" element={<PandG />} />
+              <Route path="/analysis" element={<Analysis />} />
+              <Route path="/strategies" element={<p>STRATS</p>} />
+              <Route path="/revenues" element={<Revenue />} />
+
               <Route path="/services/ag" element={<Gruha />} />
               <Route path="/services/av" element={<Vihara />} />
               <Route path="/services/im" element={<InstaMed />} />
