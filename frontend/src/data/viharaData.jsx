@@ -12,49 +12,49 @@ export const services = [
   },
   {
     title: "Translators",
-    desc: "Professional translators available to assist patients with language barriers during their medical journey.",
+    desc: "Our platform provides certified medical translators to bridge language barriers, ensuring clear communication between patients and healthcare providers for a seamless treatment experience.",
     img: images.Translators1_AV, // Adjust the image import key
     bullets: [],
   },
   {
     title: "Existing Agents",
-    desc: "Access to experienced agents who can help navigate the medical tourism process.",
+    desc: "We partner with experienced local agents who offer personalized assistance, from pre-travel planning to on-ground support, making the entire medical journey hassle-free.",
     img: images.ExistingAgents_AV, // Adjust the image import key
     bullets: [],
   },
   {
     title: "Flights",
-    desc: "Convenient flight arrangements to facilitate travel for medical treatments.",
+    desc: "We arrange cost-effective and convenient flights tailored to each patient’s schedule, taking care of every detail to ensure a smooth arrival and departure experience.",
     img: images.Flights_AV, // Adjust the image import key
     bullets: [],
   },
   {
     title: "Visas",
-    desc: "Assistance with visa processing for medical travelers.",
+    desc: "Our dedicated visa team assists with medical visa applications and documentation, streamlining the process for faster approvals and hassle-free entry into the country.",
     img: images.Visas_1_AV, // Adjust the image import key
     bullets: [],
   },
   {
     title: "Hotels",
-    desc: "Comfortable hotel accommodations near medical facilities.",
+    desc: "Trusted accommodations that prioritize comfort, safety, and proximity to healthcare facilities, offering patients and families a restful environment for recovery and relaxation.",
     img: images.Hotels_2_AV, // Adjust the image import key
     bullets: [],
   },
   {
     title: "Car - Local Travel",
-    desc: "Local transportation options for patients and their families during their stay.",
+    desc: "Reliable, comfortable local transportation options are arranged, ensuring safe and efficient travel between medical appointments, accommodations, and other essential destinations.",
     img: images.Car_LocalTravel_AV, // Adjust the image import key
     bullets: [],
   },
   {
     title: "Food Services",
-    desc: "Nutritional meal options tailored to dietary needs during recovery.",
+    desc: "We offer tailored meal plans from trusted providers, catering to dietary restrictions and preferences to ensure patients maintain proper nutrition during their treatment.",
     img: images.Food_Services_3_AV, // Adjust the image import key
     bullets: [],
   },
   {
     title: "Authorized Attenders/Guide to Assist",
-    desc: "Professional guides to help patients navigate their medical journey.",
+    desc: "Trained guides accompany patients throughout their medical journey, providing compassionate support, cultural insights, and assistance with appointments, medications, and hospital visits.",
     img: images.AuthorisedAttenders_AV, // Adjust the image import key
     bullets: [],
   },

@@ -13,6 +13,7 @@ import {
   homecareElderly,
   homecareFitness,
   nearbyRehabCenters,
+  nearbyDeaddictionCenters,
   nearbyTherapyCenters,
   endOfLifeCare,
   homecareVaccination,
@@ -44,6 +45,8 @@ const Gruha = () => {
     ? homecareFitness
     : selectedCategory === "Nearby Rehab Centers"
     ? nearbyRehabCenters
+    : selectedCategory === "Nearby Dedication Center"
+    ? nearbyDeaddictionCenters
     : selectedCategory === "Nearby Therapy Centers"
     ? nearbyTherapyCenters
     : selectedCategory === "End-of-life Care"
@@ -58,7 +61,7 @@ const Gruha = () => {
     ? packages // Show the data for packages tab
     : selectedCategory === "Customer Support"
     ? customerSupport // Show the data for customer support tab
-    : [...homecarePost, ...homecareMedServices, ...homecareEmergencyServices, ...homecareEquipment, ...homecareMonitoringDevices, ...homecareElderly, ...homecareFitness, ...nearbyRehabCenters, ...nearbyTherapyCenters, ...endOfLifeCare, ...homecareVaccination, ...hospitalSearch, ...nearbyClinics]; // Show all services for "All Services"
+    : [...homecarePost, ...homecareMedServices, ...homecareEmergencyServices, ...homecareEquipment, ...homecareMonitoringDevices, ...homecareElderly, ...homecareFitness, ...nearbyRehabCenters, ...nearbyDeaddictionCenters, ...nearbyTherapyCenters, ...endOfLifeCare, ...homecareVaccination, ...hospitalSearch, ...nearbyClinics]; // Show all services for "All Services"
 
   const openModal = (card) => {
     setSelectedCard(card);

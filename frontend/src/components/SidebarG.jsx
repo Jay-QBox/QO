@@ -19,6 +19,7 @@ const Sidebar = ({ setSelectedCategory, selectedCategory }) => {
         "Homecare for Elderly people",
         "Homecare Fitness",
         "Nearby Rehab Centers",
+        "Nearby Dedication Center",
         "Nearby Therapy Centers",
         "End-of-life Care",
         "Homecare Vaccination",
