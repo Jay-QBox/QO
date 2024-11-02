@@ -52,7 +52,7 @@ import Homecare_Medical_BP from "./AG_medical_monitoring/Homecare_Medical_BP.web
 import Homecare_Medical_Diabetics from "./AG_medical_monitoring/Homecare_Medical_Diabetics.webp";
 import Homecare_Medical_Vital from "./AG_medical_monitoring/Homecare_Medical_Vital.webp";
 import Homecare_Medical_Heart from "./AG_medical_monitoring/Homecare_Medical_Heart.webp";
-
+ 
 // AG_Homecare_for_Elderly_people
 import AG_Ambulance_Support from "./AG_Homecare_for_Elderly_people/AG_Ambulance_Support.webp";
 import AG_Bedside_Attendants from "./AG_Homecare_for_Elderly_people/AG_Bedside_Attendants.webp";
